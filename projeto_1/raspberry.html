@@ -62,12 +62,13 @@
             }
 
             .body .featured-card {
-                background: url("https://www.raspberrypi.org/pagekit-assets/media/images/10ef7abb0d32966fa487.png");
+                background: url("media/10ef7abb0d32966fa487.png");
                 background-size: contain;
                 background-repeat: no-repeat;
                 display: flex;
                 flex-direction: row;
                 align-items: stretch;
+                margin-bottom: 3rem;
             }
 
             .body .featured-card .main {
@@ -92,7 +93,7 @@
                 margin-bottom: 2.4rem;
             }
 
-            .body .featured-card .main .big-button {
+            .big-button {
                 color: #ffffff;
                 font-weight: 500;
                 cursor: pointer;
@@ -103,9 +104,8 @@
                 border-radius: .5rem;
             }
 
-            .body .featured-card .main .big-button:hover {
+            .big-button:hover {
                 background-color: #0052cc;
-
             }
 
             .body .featured-card .secondary {
@@ -144,7 +144,7 @@
             }
 
             .body .featured-card .secondary .cell .title:hover {
-                color: #c51d1a;
+                color: #c51d4a;
             }
 
             .body .featured-card .secondary .cell .arrow {
@@ -157,6 +157,114 @@
                 height: 100%;
                 padding-right: 3rem;
                 content: " ";
+            }
+
+            .body .news {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 3rem;
+                grid-auto-rows: min(28vw,37rem);
+            }
+
+            .body .news .small-card {
+                grid-column: 1;
+                grid-row: 1;
+                background-color: #ffffff;
+                background-size: contain;
+                background-repeat: no-repeat;
+                overflow: hidden;
+                display: flex;
+                flex-direction: column;
+                align-items: stretch;
+                cursor: pointer;
+            }
+
+            .body .news .small-card .category {
+                color: #666;
+                font-size: 1.4rem;
+                margin-bottom: .5rem;
+                text-transform: uppercase;
+            }
+
+            .body .news .small-card .title {
+                color: #0044ab;
+                font-weight: 500;
+                line-height: 2.5rem;
+                font-size: 1.8rem;
+            }
+
+            .body .news .small-card:hover .title {
+                color: #c51d4a;
+            }
+
+            .body .news .small-card .cover {
+                flex: 1;
+                object-fit: cover;
+                height: 16rem;
+            }
+
+            .body .news .small-card .content {
+                min-height: 12.8rem;
+                padding: 1.6rem;
+                flex-direction: column;
+                justify-content: space-between;
+                display: flex;
+            }
+
+            .body .news .small-card .content .footer {
+                color: #444;
+                display: flex;
+                margin-top: auto;
+                flex-direction: row;
+                font-size: 1.6rem;
+                justify-content: space-between;
+            }
+
+            .body .news .small-card .content .footer .comments {
+                border-radius: 1.1rem;
+                padding-inline: 1.2rem;
+                padding-left: 1.2rem;
+                padding-right: 1.2rem;
+                background-color: #eee;
+            }
+
+            .body .news .small-card .content .footer .comments span {
+                position: absolute;
+                z-index: 99;
+                width: 1rem;
+                height: 1rem;
+                margin-top: 1.7rem;
+                background-image: url("media/download.svg");
+                background-repeat: no-repeat;
+            }
+
+            .body .news .thick-card {
+                grid-column: 2 / 4;
+                grid-row: 1;
+                overflow: hidden;
+                background-color: rgb(224, 168, 67);
+                background-image: url("media/7111882e2c5bf33135bb.png");
+                background-size: auto 90%;
+                background-repeat: no-repeat;
+                background-position: right bottom;
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: center;
+                padding: 3rem 2rem;
+            }
+
+            .body .news .thick-card .title {
+                font-size: 2.4rem;
+                margin-bottom: 2rem;
+                font-weight: 700;
+            }
+
+            .body .news .thick-card .description {
+                max-width: 50%;
+                margin-bottom: 2.4rem;
+                font-size: 1.8rem;
+                font-weight: 400;
             }
 
         </style>
@@ -221,49 +329,51 @@
         <div class="body">
             <div class="featured-card">
                 <div class="main">
-                    <img width="320" height="45" src="https://www.raspberrypi.org/pagekit-assets/media/images/ffd870602ddcfc19a8a0.svg"/>
+                    <img width="320" height="45" src="media/ffd870602ddcfc19a8a0.svg"/>
                     <div class="subtitle">Your complete personal computer, built into a <b>compact keyboard</b></div>
                     <div class="big-button">Find out more</div>
                 </div>
                 <div class="secondary">
                     <div class="cell">
-                        <img src="https://www.raspberrypi.org/resized-images/https:/www.raspberrypi.org/app/uploads/2020/10/Raspberry-Pi-400-back-.jpg?variant=link_button" class="image"/>
+                        <img src="media/Raspberry-Pi-400-back-.jpeg" class="image"/>
                         <a class="title">Raspberry Pi 400: the $70 desktop PC</a>
                         <div class="arrow"></div>
                     </div>
                     <div class="cell">
-                        <img src="https://www.raspberrypi.org/resized-images/https://www.raspberrypi.org/app/uploads/2020/10/Getting-Started-4th-edition.jpg?variant=link_button" class="image"/>
+                        <img src="media/Getting-Started-4th-edition.jpeg" class="image"/>
                         <a class="title">Get started with your Raspberry Pi 400</a>
                         <div class="arrow"></div>
                     </div>
                     <div class="cell">
-                        <img src="https://www.raspberrypi.org/resized-images/https://www.raspberrypi.org/app/uploads/2020/10/Raspberry-Pi-400-desk-2.jpg?variant=link_button" class="image"/>
+                        <img src="media/Raspberry-Pi-400-desk-2.jpeg" class="image"/>
                         <a class="title">Raspberry Pi 400 for working and learning at home</a>
                         <div class="arrow"></div>
                     </div>
                 </div>
             </div>
-            <div class="small-card">
-                <img src="" class="image"/>
-                <div class="category">PROJECT</div>
-                <div class="title">Make your bike smart with Raspberry Pi</div>
-                <div class="date">25th Jun 2021</div>
-                <img src="" class="comments"/>
-            </div>
-            <div class="thick-card">
-                <img src="" class="badge"/>
-                <div class="title">Coolest Projects 2021</div>
-                <div class="description">Yes, it's back! We are so excited that Coolest Projects is happening this yeat as an online showcase.<div>
-                <div class="big-button">View the showcase</div>
-                <img src="" class="featured-img"/>
-            </div>
-            <div class="small-card">
-                <img src="" class="image"/>
-                <div class="category">PROJECT</div>
-                <div class="title">‘Epigone drone’ pays homage to NASA’s Mars Helicopter | The MagPi #107</div>
-                <div class="date">24th Jun 2021</div>
-                <img src="" class="comments"/>
+            <div class="news">
+                <div class="small-card">
+                    <img src="media/Screenshot-2021-06-29-at-18.30.48.jpeg" class="cover"/>
+                    <div class="content">
+                        <div class="category">PROJECT</div>
+                        <div class="title">Translate dog barks with Raspberry Pi</div>
+                        <div class="footer">
+                            <div class="date">2nd Jul 2021</div>
+                            <div class="comments">
+                                1
+                                <span></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="thick-card">
+                    <div class="title">Community stories</div>
+                    <div class="description">Meet some of the inspirational community members who are creating with technology and changing the world around them.</div>
+                    <div class="big-button">Meet the community</div>
+                </div>
             </div>
         </div>
+        <br>
+        <br>
     </body>
 </html>
