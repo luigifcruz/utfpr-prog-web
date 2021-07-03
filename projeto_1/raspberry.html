@@ -17,29 +17,37 @@
 
             body {
                 font-family: Roboto,sans-serif;
-                background: #EDF0F6;
                 padding: 0;
                 margin: 0;
                 line-height: 1.4;
             }
 
+            header {
+                background-color: #FFFFFF;
+            }
+
+            main {
+                background-color: #EDF0F6;    
+                padding-bottom: 10em;
+            }
+
             .header {
                 overflow: hidden;
-                background-color: #ffffff;
                 padding: 0 8.4rem;
-
                 height: 7.5rem;
-                margin: 0 auto;
                 justify-content: space-between;
                 display: flex;
                 align-items: center;
+                max-width: 130rem;
+                box-sizing: border-box;
+                margin: 0 auto;
             }
 
             .header .menu {
                 display: flex;
-                padding-right: 35px;
+                padding-right: 3.5rem;
                 flex-grow: 1;
-                max-width: 765px;
+                max-width: 76.5rem;
             }
 
             .header svg {
@@ -60,12 +68,16 @@
                 padding-top: 5rem;
                 padding-right: 5vw;
                 padding-left: 5vw;
+                max-width: 130rem;
+                margin: 0 auto;
+                box-sizing: border-box;
             }
 
             .body .featured-card {
                 background: url("media/10ef7abb0d32966fa487.png");
-                background-size: contain;
+                background-size: 100% auto;
                 background-repeat: no-repeat;
+                background-position: center top;
                 display: flex;
                 flex-direction: row;
                 align-items: stretch;
@@ -76,11 +88,8 @@
                 display: flex;
                 flex-direction: column;
                 flex-basis: 67%;
-                flex-grow: 0;
-                flex-shrink: 0;
                 align-items: center;
-                padding-top: 22vw;
-                padding-bottom: 4rem;
+                padding: 28rem 4rem 4rem;
             }
 
             .body .featured-card .main img {
@@ -265,66 +274,75 @@
                 font-size: 1.8rem;
                 font-weight: 400;
             }
+
+            @media only screen and (min-width: 1300px) {
+                .body {
+                    padding-right: 6.5rem;
+                    padding-left: 6.5rem;
+                }
+            }
         </style>
     </head>
     <body>
-        <div class="header">
-            <img src="/media/raspberry.svg"/>
-            <div class="menu">
-                <a class="dropdown">Hardware</a>
-                <a class="dropdown">Software</a>
-                <a class="dropdown">Books & magazines</a>
-                <a class="dropdown">Learn</a>
-                <a class="dropdown">Teach</a>
-                <a class="dropdown">About us</a>
-            </div>
-            <img src="" class="menu-icon"/>
-        </div>
-        <div class="body">
-            <div class="featured-card">
-                <div class="main">
-                    <img width="320" height="45" src="media/ffd870602ddcfc19a8a0.svg"/>
-                    <p class="subtitle">Your complete personal computer, built into a <b>compact keyboard</b></p>
-                    <a class="big-button">Find out more</a>
+        <header>
+            <div class="header">
+                <img src="/media/raspberry.svg"/>
+                <div class="menu">
+                    <a class="dropdown">Hardware</a>
+                    <a class="dropdown">Software</a>
+                    <a class="dropdown">Books & magazines</a>
+                    <a class="dropdown">Learn</a>
+                    <a class="dropdown">Teach</a>
+                    <a class="dropdown">About us</a>
                 </div>
-                <div class="secondary">
-                    <div class="cell">
-                        <img src="media/Raspberry-Pi-400-back-.jpeg" class="image"/>
-                        <a class="title">Raspberry Pi 400: the $70 desktop PC</a>
-                        <div class="arrow"></div>
-                    </div>
-                    <div class="cell">
-                        <img src="media/Getting-Started-4th-edition.jpeg" class="image"/>
-                        <a class="title">Get started with your Raspberry Pi 400</a>
-                        <div class="arrow"></div>
-                    </div>
-                    <div class="cell">
-                        <img src="media/Raspberry-Pi-400-desk-2.jpeg" class="image"/>
-                        <a class="title">Raspberry Pi 400 for working and learning at home</a>
-                        <div class="arrow"></div>
-                    </div>
-                </div>
+                <img src="" class="menu-icon"/>
             </div>
-            <div class="news">
-                <div class="small-card">
-                    <img src="media/Screenshot-2021-06-29-at-18.30.48.jpeg" class="cover"/>
-                    <div class="content">
-                        <div class="category">PROJECT</div>
-                        <a class="title">Translate dog barks with Raspberry Pi</a>
-                        <div class="footer">
-                            <div class="date">2nd Jul 2021</div>
-                            <div class="comments">1<img src="media/download.svg"/></div>
+        </header>
+        <main>
+            <div class="body">
+                <div class="featured-card">
+                    <div class="main">
+                        <img width="320" height="45" src="media/ffd870602ddcfc19a8a0.svg"/>
+                        <p class="subtitle">Your complete personal computer, built into a <b>compact keyboard</b></p>
+                        <a class="big-button">Find out more</a>
+                    </div>
+                    <div class="secondary">
+                        <div class="cell">
+                            <img src="media/Raspberry-Pi-400-back-.jpeg" class="image"/>
+                            <a class="title">Raspberry Pi 400: the $70 desktop PC</a>
+                            <div class="arrow"></div>
+                        </div>
+                        <div class="cell">
+                            <img src="media/Getting-Started-4th-edition.jpeg" class="image"/>
+                            <a class="title">Get started with your Raspberry Pi 400</a>
+                            <div class="arrow"></div>
+                        </div>
+                        <div class="cell">
+                            <img src="media/Raspberry-Pi-400-desk-2.jpeg" class="image"/>
+                            <a class="title">Raspberry Pi 400 for working and learning at home</a>
+                            <div class="arrow"></div>
                         </div>
                     </div>
                 </div>
-                <div class="thick-card">
-                    <div class="title">Community stories</div>
-                    <p class="description">Meet some of the inspirational community members who are creating with technology and changing the world around them.</p>
-                    <a class="big-button">Meet the community</a>
+                <div class="news">
+                    <div class="small-card">
+                        <img src="media/Screenshot-2021-06-29-at-18.30.48.jpeg" class="cover"/>
+                        <div class="content">
+                            <div class="category">PROJECT</div>
+                            <a class="title">Translate dog barks with Raspberry Pi</a>
+                            <div class="footer">
+                                <div class="date">2nd Jul 2021</div>
+                                <div class="comments">1<img src="media/download.svg"/></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="thick-card">
+                        <div class="title">Community stories</div>
+                        <p class="description">Meet some of the inspirational community members who are creating with technology and changing the world around them.</p>
+                        <a class="big-button">Meet the community</a>
+                    </div>
                 </div>
             </div>
-        </div>
-        <br>
-        <br>
+        </main>
     </body>
 </html>
