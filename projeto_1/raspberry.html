@@ -27,7 +27,7 @@
             }
 
             main {
-                background-color: #EDF0F6;    
+                background-color: #EDF0F6;
                 padding-bottom: 10em;
             }
 
@@ -78,6 +78,7 @@
                 background-size: 100% auto;
                 background-repeat: no-repeat;
                 background-position: center top;
+                background-color: #d44e62;
                 display: flex;
                 flex-direction: row;
                 align-items: stretch;
@@ -89,7 +90,25 @@
                 flex-direction: column;
                 flex-basis: 67%;
                 align-items: center;
-                padding: 28rem 4rem 4rem;
+                padding: 48vw 4rem 4rem;
+            }
+
+            @media screen and (min-width: 700px) {
+                .body .featured-card .main {
+                    padding: 30vw 4rem 4rem;
+                }
+            }
+
+            @media screen and (min-width: 1024px) {
+                .body .featured-card .main {
+                    padding: 22vw 4rem 4rem;
+                }
+            }
+
+            @media screen and (min-width: 1300px) {
+                .body .featured-card .main {
+                    padding: 28rem 4rem 4rem;
+                }
             }
 
             .body .featured-card .main img {
@@ -109,9 +128,20 @@
                 cursor: pointer;
                 font-size: 2rem;
                 line-height: 1.2;
-                padding: 1.2rem 4.8rem;
                 background-color: rgb(0, 69, 173);
                 border-radius: .5rem;
+            }
+
+            @media screen and (min-width: 800px) {
+                .big-button {
+                    padding: 1rem 4rem;
+                }
+            }
+
+            @media screen and (min-width: 1200px) {
+                .big-button {
+                    padding: 1.2rem 4.8rem;
+                }
             }
 
             .big-button:hover {
@@ -210,7 +240,7 @@
             .body .news .small-card .cover {
                 flex: 1;
                 object-fit: cover;
-                height: 16rem;
+                height: 10rem;
             }
 
             .body .news .small-card .content {
