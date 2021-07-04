@@ -20,6 +20,7 @@
                 padding: 0;
                 margin: 0;
                 line-height: 1.4;
+                background-color: #EDF0F6;
             }
 
             header {
@@ -27,13 +28,12 @@
             }
 
             main {
-                background-color: #EDF0F6;
                 padding-bottom: 10em;
             }
 
             .header {
                 overflow: hidden;
-                padding: 0 8.4rem;
+                padding: 0 1.6rem;
                 height: 7.5rem;
                 justify-content: space-between;
                 display: flex;
@@ -43,11 +43,39 @@
                 margin: 0 auto;
             }
 
+            @media screen and (min-width: 700px) {
+                .header {
+                    padding: 0 7rem;
+                }
+            }
+
+            @media screen and (min-width: 1024px) {
+                .header {
+                    padding: 0 8.4rem;
+                }
+            }
+
             .header .menu {
-                display: flex;
                 padding-right: 3.5rem;
                 flex-grow: 1;
                 max-width: 76.5rem;
+                display: none;
+            }
+
+            .header .menu-icon {
+                width: 2.6rem;
+                height: 2.6rem;
+                visibility: unset;
+            }
+
+            @media screen and (min-width: 1000px) {
+                .header .menu {
+                    display: flex;
+                }
+
+                .header .menu-icon {
+                    visibility: hidden;
+                }
             }
 
             .header svg {
@@ -65,30 +93,49 @@
             }
 
             .body {
-                padding-top: 5rem;
                 padding-right: 5vw;
                 padding-left: 5vw;
                 max-width: 130rem;
                 margin: 0 auto;
                 box-sizing: border-box;
+                padding-top: 3rem;
+            }
+
+            @media screen and (min-width: 1024px) {
+                .body {
+                    padding-top: 5rem;
+                }
             }
 
             .body .featured-card {
-                background: url("media/10ef7abb0d32966fa487.png");
+                background-image: url("media/b876a3cb4c23af845ca6.png");
                 background-size: 100% auto;
                 background-repeat: no-repeat;
                 background-position: center top;
                 background-color: #d44e62;
                 display: flex;
-                flex-direction: row;
-                align-items: stretch;
                 margin-bottom: 3rem;
+                    align-items: stretch;
+                    flex-direction: column;
+            }
+
+            @media screen and (min-width: 700px) {
+                .body .featured-card {
+                    background-image: url("media/3cb031d8ac9039f62347.png");
+                }
+            }
+
+            @media screen and (min-width: 1024px) {
+                .body .featured-card {
+                    background-image: url("media/10ef7abb0d32966fa487.png");
+                    align-items: stretch;
+                    flex-direction: row;
+                }
             }
 
             .body .featured-card .main {
                 display: flex;
                 flex-direction: column;
-                flex-basis: 67%;
                 align-items: center;
                 padding: 48vw 4rem 4rem;
             }
@@ -102,6 +149,7 @@
             @media screen and (min-width: 1024px) {
                 .body .featured-card .main {
                     padding: 22vw 4rem 4rem;
+                    flex-basis: 67%;
                 }
             }
 
@@ -118,8 +166,15 @@
             .body .featured-card .main .subtitle {
                 color: #ffffff;
                 font-weight: 400;
-                font-size: 1.8rem;
+                font-size: 1.6rem;
                 margin-bottom: 2.4rem;
+                text-align: center;
+            }
+
+            @media screen and (min-width: 700px) {
+                .body .featured-card .main .subtitle {
+                    font-size: 1.8rem;
+                }
             }
 
             .big-button {
@@ -130,6 +185,7 @@
                 line-height: 1.2;
                 background-color: rgb(0, 69, 173);
                 border-radius: .5rem;
+                padding: .8rem 3.2rem;
             }
 
             @media screen and (min-width: 800px) {
@@ -149,15 +205,31 @@
             }
 
             .body .featured-card .secondary {
-                flex-basis: 33%;
-                flex-direction: column;
                 display: flex;
                 align-items: stretch;
                 justify-content: center;
-                padding-top: 4rem;
                 padding-right: 4rem;
                 padding-bottom: 4rem;
+                display: none;
                 gap: 2rem;
+            }
+
+            @media screen and (min-width: 700px) {
+                .body .featured-card .secondary {
+                    padding-top: 0rem;
+                    padding-left: 4rem;
+                    flex-direction: row;
+                    display: flex;
+                }
+            }
+
+            @media screen and (min-width: 1024px) {
+                .body .featured-card .secondary {
+                    flex-basis: 33%;
+                    flex-direction: column;
+                    padding-top: 4rem;
+                    padding-left: 0rem;
+                }
             }
 
             .body .featured-card .secondary .cell {
@@ -171,6 +243,13 @@
             .body .featured-card .secondary .cell img {
                 object-fit: cover;
                 width: 9rem;
+                display: none;
+            }
+
+            @media screen and (min-width: 1024px) {
+                .body .featured-card .secondary .cell img {
+                    display: unset;
+                }
             }
 
             .body .featured-card .secondary .cell .title {
@@ -201,22 +280,33 @@
 
             .body .news {
                 display: grid;
-                grid-template-columns: repeat(3, 1fr);
-                gap: 3rem;
-                grid-auto-rows: min(28vw,37rem);
+                grid-template-columns: repeat(1, 1fr);
+            }
+
+            @media screen and (min-width: 1024px) {
+                .body .news {
+                    grid-auto-rows: min(28vw, 37rem);
+                    grid-template-columns: repeat(3, 1fr);
+                    grid-gap: 3rem;
+                }
             }
 
             .body .news .small-card {
-                grid-column: 1;
                 grid-row: 1;
                 background-color: #ffffff;
                 background-size: contain;
                 background-repeat: no-repeat;
                 overflow: hidden;
-                display: flex;
+                display: none;
                 flex-direction: column;
                 align-items: stretch;
                 cursor: pointer;
+            }
+
+            @media screen and (min-width: 1024px) {
+                .body .news .small-card {
+                    display: flex;
+                }
             }
 
             .body .news .small-card .category {
@@ -270,7 +360,6 @@
 
             .body .news .small-card .content .footer .comments img {
                 position: absolute;
-                z-index: 99;
                 width: 1rem;
                 height: 1rem;
                 margin-top: 1.7rem;
@@ -278,18 +367,25 @@
 
             .body .news .thick-card {
                 grid-column: 2 / 4;
-                grid-row: 1;
                 overflow: hidden;
                 background-color: rgb(224, 168, 67);
                 background-image: url("media/7111882e2c5bf33135bb.png");
-                background-size: auto 90%;
+                background-size: 45rem auto;
                 background-repeat: no-repeat;
                 background-position: right bottom;
                 display: flex;
-                flex-direction: column;
                 align-items: flex-start;
+                flex-direction: column;
                 justify-content: center;
                 padding: 3rem 2rem;
+                padding-bottom: 40rem;
+            }
+
+            @media screen and (min-width: 830px) {
+                .body .news .thick-card {
+                    background-size: auto 90%;
+                    padding: 3rem 2rem;
+                }
             }
 
             .body .news .thick-card .title {
@@ -299,10 +395,15 @@
             }
 
             .body .news .thick-card .description {
-                max-width: 50%;
                 margin-bottom: 2.4rem;
                 font-size: 1.8rem;
                 font-weight: 400;
+            }
+
+            @media screen and (min-width: 830px) {
+                .body .news .thick-card .description {
+                    max-width: 50%;
+                }
             }
 
             @media only screen and (min-width: 1300px) {
@@ -325,7 +426,7 @@
                     <a class="dropdown">Teach</a>
                     <a class="dropdown">About us</a>
                 </div>
-                <img src="" class="menu-icon"/>
+                <img src="/media/hamburger.jpg" class="menu-icon"/>
             </div>
         </header>
         <main>
