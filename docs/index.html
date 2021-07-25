@@ -24,21 +24,21 @@
                     <a class="dropdown">Learn</a>
                     <a class="dropdown">Teach</a>
                     <a class="dropdown">About us</a>
-                    <a class="dropdown login">Login</a>
+                    <a id="login-btn" onclick="goToLogin()" class="dropdown login">Login</a>
                 </div>
                 <img alt="Show Menu" src="media/hamburger.jpg" class="menu-icon"/>
             </div>
         </header>
         <main>
             <div class="body">
-                <div class="featured-card interactive">
+                <div id="login" class="featured-card interactive">
                     <h1>Login</h1>
                     <p>Error! Please check your email and password and try again.</p>
                     <input type="email" name="email" placeholder="E-Mail" required/>
                     <input type="password" name="password" placeholder="Password" required/>
-                    <button class="button" type="submit">Login</button>
+                    <button onclick="doLogin();" class="button" type="submit">Login</button>
                 </div>
-                <div class="featured-card interactive">
+                <div id="search" class="featured-card interactive">
                     <h1>ArXiv Search</h1>
                     <p>Search terms must be at least 3 characters in length.</p>
                     <input type="text" name="search-term" placeholder="Search Term"/>
@@ -51,7 +51,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="featured-card">
+                <div id="landing-page-card" class="featured-card">
                     <div class="main">
                         <img alt="Raspberry Pi 400" width="320" height="45" src="media/ffd870602ddcfc19a8a0.svg"/>
                         <p class="subtitle">Your complete personal computer, built into a <b>compact keyboard</b></p>
@@ -75,7 +75,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="news">
+                <div id="landing-page-news" class="news">
                     <div class="small-card">
                         <img alt="Dog Cuddle" src="media/Screenshot-2021-06-29-at-18.30.48.jpeg" class="cover"/>
                         <div class="content">
