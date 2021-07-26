@@ -130,7 +130,7 @@ function doSearch() {
     }
     setDisplay("error-msg-search", "none");
 
-    fetch("http://export.arxiv.org/api/query?search_query=all:" + searchTerm + "&start=0&max_results=15")
+    fetch("https://export.arxiv.org/api/query?search_query=all:" + searchTerm + "&start=0&max_results=15")
         .then(response => {
             if (!response.ok) {
                 throw Error("There was an error with the current search term. Please try again.");
