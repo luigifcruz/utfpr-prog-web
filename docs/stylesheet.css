@@ -131,6 +131,10 @@ main {
     display: none;
 }
 
+.error {
+    display: none;
+}
+
 .body .interactive p {
     color: #b32d2e;
 }
@@ -167,6 +171,7 @@ main {
 }
 
 .carrousel .element {
+    margin-top: 2rem;
     border-bottom: 3px solid #EDF0F6;
 }
 
@@ -182,11 +187,13 @@ main {
     margin-bottom: .25rem;
 }
 
-.carrousel .element h2 {
+.carrousel .element a {
     font-size: 2rem;
     color: #2c3338;
-    margin-top: 2rem;
     margin-bottom: .5rem;
+    text-decoration: none;
+    cursor: pointer;
+
 }
 
 .body .featured-card .main {

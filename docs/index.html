@@ -7,9 +7,9 @@
         <link rel="icon" type="image/webp" href="favicon.webp"/>
         <title>Teach, Learn, and Make with Raspberry Pi</title>
         <script>
-            //if (!confirm("This is a mockup of the Raspberry Pi website. All copyrighted content is their property. This is meant for educational purposes only.")) {
-            //    window.location.replace("http://pudim.com.br/");
-            //}
+            if (!confirm("This is a mockup of the Raspberry Pi website. All copyrighted content is their property. This is meant for educational purposes only.")) {
+                window.location.replace("http://pudim.com.br/");
+            }
         </script>
         <link rel="stylesheet" href="stylesheet.css">
     </head>
@@ -33,23 +33,17 @@
             <div class="body">
                 <div id="login" class="featured-card interactive">
                     <h1>Login</h1>
-                    <p>Error! Please check your email and password and try again.</p>
+                    <p class="error" id="error-msg-login"></p>
                     <input type="email" name="email" placeholder="E-Mail" required/>
                     <input type="password" name="password" placeholder="Password" required/>
                     <button onclick="doLogin();" class="button" type="submit">Login</button>
                 </div>
                 <div id="search" class="featured-card interactive">
                     <h1>ArXiv Search</h1>
-                    <p>Search terms must be at least 3 characters in length.</p>
+                    <p class="error" id="error-msg-search">Search terms must be at least 3 characters in length.</p>
                     <input type="text" name="search-term" placeholder="Search Term"/>
-                    <button class="button" type="submit">Search</button>
-                    <div class="carrousel">
-                        <div id="1" class="element">
-                            <h2>The unusual widespread solar energetic particle event on 2013 August 19. Solar origin and particle longitudinal distribution</h2>
-                            <h3>Authors: Guillermo Torres, David W. Latham, Samuel N. Quinn</h3>
-                            <p>We present the results of a spectroscopic monitoring program of the Pleiades region aimed at completing the census of spectroscopic binaries in the cluster, extending it to longer periods than previously reachable. We gathered 6104 spectra of 377 stars between 1981 and 2021, and merged our radial velocities with 1151 measurements from an independent survey by others started three years earlier. With the combined data spanning more than 43 yr we have determined orbits for some 30 new binary and multiple systems, more than doubling the number previously known in the Pleiades. The longest period is 36.5 yr. A dozen additional objects display long-term trends in their velocities, implying even longer periods. We examine the collection of orbital elements for cluster members, and find that the shape of the incompleteness-corrected distribution of periods (up to 104 days) is similar to that of solar-type binaries in the field, while that of the eccentricities is different. The mass-ratio distribution is consistent with being flat. The binary frequency in the Pleiades for periods up to 104 days is 25±3%, after corrections for undetected binaries, which is nearly double that of the field up to the same period. The total binary frequency including known astrometric binaries is at least 57%. We estimate the internal radial velocity dispersion in the cluster to be 0.48±0.04 km s−1. We revisit the determination of the tidal circularization period, and confirm its value to be 7.2±1.0 days, with an improved precision compared to an earlier estimate.</p>
-                        </div>
-                    </div>
+                    <button class="button" onclick="doSearch();" type="submit">Search</button>
+                    <div id="carrousel" class="carrousel"></div>
                 </div>
                 <div id="landing-page-card" class="featured-card">
                     <div class="main">
