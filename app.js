@@ -1,40 +1,19 @@
 require("./config/database").connect();
 
 const express = require("express");
-const jwt = require("jsonwebtoken");
 
-const user = require("./model/user");
-//const auth = require("./controler/auth");
+const Auth = require("./controller/auth")
+const User = require("./model/user");
 
 const app = express();
 
 app.use(express.json({ limit: "50mb" }));
 
-app.post("/signup", async (req, res) => {
-    try {
-        console.log(req.body)
-        const { email, password } = req.body;
+app.use("/signup", Auth.signup);
+app.use("/signin", Auth.signin);
 
-        if (email.length < 3 || password.length < 3) {
-            res.status(400).send("Invalid field.");
-        }
-
-        const newUser = await user.create({
-            email: email.toLowerCase(),
-            password,
-        });
-
-        const token = jwt.sign({
-            user_id: newUser._id,
-            email,
-        }, "iamthetokenkey");
-
-        newUser.token = token;
-        res.status(201).json(newUser);
-    } catch(err) {
-        res.status(503).send("Internal server error.");
-        console.warn(err);
-    }
+app.get("/welcome", Auth.verifyToken, (req, res) => {
+    res.status(200).send("Hello");
 });
 
 module.exports = app;
