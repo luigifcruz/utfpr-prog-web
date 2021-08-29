@@ -7,9 +7,9 @@
         <link rel="icon" type="image/webp" href="favicon.webp"/>
         <title>Teach, Learn, and Make with Raspberry Pi</title>
         <script>
-            if (!confirm("This is a mockup of the Raspberry Pi website. All copyrighted content is their property. This is meant for educational purposes only.")) {
-                window.location.replace("http://pudim.com.br/");
-            }
+            //if (!confirm("This is a mockup of the Raspberry Pi website. All copyrighted content is their property. This is meant for educational purposes only.")) {
+            //    window.location.replace("http://pudim.com.br/");
+            //}
         </script>
         <link rel="stylesheet" href="stylesheet.css">
     </head>
@@ -25,6 +25,7 @@
                     <a class="dropdown">Teach</a>
                     <a class="dropdown">About us</a>
                     <a id="login-btn" onclick="goToLogin()" class="dropdown login">Login</a>
+                    <a id="signup-btn" onclick="goToSignup()" class="dropdown login">Sign-up</a>
                 </div>
                 <img alt="Show Menu" src="media/hamburger.jpg" class="menu-icon"/>
             </div>
@@ -37,6 +38,23 @@
                     <input type="email" name="email" placeholder="E-Mail" required/>
                     <input type="password" name="password" placeholder="Password" required/>
                     <button onclick="doLogin();" class="button" type="submit">Login</button>
+                </div>
+                <div id="signup" class="featured-card interactive">
+                    <h1>Sign-up</h1>
+                    <p class="error" id="error-msg-signup"></p>
+                    <input type="email" name="email-signup" placeholder="E-Mail" required/>
+                    <input type="password" name="password-signup" placeholder="Password" required/>
+                    <div>
+                        <input type="checkbox" name="admin" id="admin"/>
+                        <label for="music">Admin</label>
+                    </div>
+                    <button onclick="doSignup();" class="button" type="submit">Sign-up</button>
+                </div>
+                <div id="post" class="featured-card interactive">
+                    <h1>You're Admin - Post Something</h1>
+                    <input type="text" name="post-title" placeholder="Title"/>
+                    <input type="textbox" name="post-abstract" placeholder="Abstract"/>
+                    <button class="button" onclick="doPost();" type="submit">Post</button>
                 </div>
                 <div id="search" class="featured-card interactive">
                     <h1>ArXiv Search</h1>

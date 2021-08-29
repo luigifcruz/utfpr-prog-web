@@ -84,6 +84,11 @@ function goToLogin() {
     updateState();
 };
 
+function goToSignup() {
+    document.state = 3;
+    updateState();
+};
+
 function doLogin() {
     const email = getValue("email");
     const password = getValue("password");
@@ -94,7 +99,7 @@ function doLogin() {
         return;
     }
 
-    fetch("https://reqres.in/api/login", {
+    fetch("signin", {
             headers: { "Content-Type": "application/json; charset=utf-8" },
             method: 'POST',
             body: JSON.stringify({
@@ -110,6 +115,46 @@ function doLogin() {
         })
         .then(data => {
             localStorage.setItem("loginToken", data["token"]);
+            localStorage.setItem("loginAdmin", data["adm"]);
+            document.state = 1;
+            updateState();
+        })
+        .catch(error => {
+            setDisplay("error-msg-login", "block");
+            setContent("error-msg-login", error)
+            console.log(error);
+        });
+};
+
+function doSignup() {
+    const email = getValue("email-signup");
+    const password = getValue("password-signup");
+    const adm = document.querySelector('#admin').checked;;
+
+    if (email.length < 3 || password.length < 3) {
+        setDisplay("error-msg-signup", "block");
+        setContent("error-msg-signup", "Error: <b>Email</b> and <b>password</b> must be at least 3 characters in length.")
+        return;
+    }
+
+    fetch("signup", {
+            headers: { "Content-Type": "application/json; charset=utf-8" },
+            method: 'POST',
+            body: JSON.stringify({
+                email,
+                password,
+                adm,
+            })
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw Error("Please check your credentials try again.");
+            }
+            return response.json();
+        })
+        .then(data => {
+            localStorage.setItem("loginToken", data["token"]);
+            localStorage.setItem("loginAdmin", data["adm"]);
             document.state = 1;
             updateState();
         })
@@ -178,28 +223,53 @@ document.addEventListener("DOMContentLoaded", function() {
 
 function updateState() {
     console.log("[DEBUG] Update state: " + document.state);
+    const adminToken = localStorage.getItem('loginAdmin');
 
     switch (document.state) {
         case 0: // Landing:
             setDisplay("landing-page-card", "flex");
             setDisplay("landing-page-news", "flex");
             setDisplay("login-btn", "block");
+            setDisplay("signup-btn", "block");
             setDisplay("login", "none");
+            setDisplay("signup", "none");
             setDisplay("search", "none");
+            setDisplay("post", "none");
             break;
         case 1: // Search
             setDisplay("landing-page-card", "none");
             setDisplay("landing-page-news", "none");
             setDisplay("login-btn", "none");
+            setDisplay("signup-btn", "none");
             setDisplay("login", "none");
+            setDisplay("signup", "none");
             setDisplay("search", "block");
+            if (adminToken === "true") {
+                setDisplay("post", "block");
+            } else {
+                setDisplay("post", "none");
+            }
             break;
         case 2: // Login
             setDisplay("landing-page-card", "none");
             setDisplay("landing-page-news", "none");
             setDisplay("login-btn", "none");
+            setDisplay("signup-btn", "none");
             setDisplay("login", "block");
+            setDisplay("signup", "none");
             setDisplay("search", "none");
+            setDisplay("post", "none");
+            break;
+        case 3: // Signup
+            setDisplay("landing-page-card", "none");
+            setDisplay("landing-page-news", "none");
+            setDisplay("login-btn", "none");
+            setDisplay("signup-btn", "none");
+            setDisplay("login", "none");
+            setDisplay("signup", "block");
+            setDisplay("search", "none");
+            setDisplay("post", "none");
+            break;
         default:
             break;
     }

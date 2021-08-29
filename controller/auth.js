@@ -18,7 +18,7 @@ fillToken = async (email, user) => {
 
 exports.signup = async (req, res) => {
     try {
-        const { email, password } = req.body;
+        const { email, password, adm } = req.body;
 
         if (validateCredentials(email, password)) {
             return res.status(400).send("Invalid field.");
@@ -31,6 +31,7 @@ exports.signup = async (req, res) => {
         let user = await User.create({
             email: email.toLowerCase(),
             password,
+            adm,
         });
         fillToken(email, user);
         return res.status(201).json(user);
