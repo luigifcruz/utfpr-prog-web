@@ -61,7 +61,7 @@ exports.signin = async (req, res) => {
     }
 };
 
-exports.verifyToken = (req, res, next) => {
+exports.verifyToken = async (req, res, next) => {
     const token = req.body.token || req.query.token || req.headers["x-access-token"];
 
     if (!token) {
@@ -69,10 +69,18 @@ exports.verifyToken = (req, res, next) => {
     }
 
     try {
-        req.user = jwt.verify(token, "iamthetokenkey");
+        const login = jwt.verify(token, "iamthetokenkey");
+        req.user = await User.findOne({ email: login.email });
     } catch(err) {
         console.warn(err);
         return res.status(401).send("Token invalid.");
     }
     return next();
 };
+
+exports.isAdmin = (req, res, next) => {
+    if (req.user.adm) {
+        return next();
+    }
+    return res.status(401).send("User not admin.");
+}
