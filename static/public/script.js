@@ -117,8 +117,48 @@ function doSignup() {
             updateState();
         })
         .catch(error => {
-            setDisplay("error-msg-login", "block");
-            setContent("error-msg-login", error)
+            setDisplay("error-msg-signup", "block");
+            setContent("error-msg-signup", error)
+            console.log(error);
+        });
+};
+
+function doPost() {
+    const title = getValue("post-title");
+    const abstract = getValue("post-abstract");
+    const url = getValue("post-url");
+
+    if (title.length < 3 || abstract.length < 3 || url.length < 3) {
+        setDisplay("error-msg-post", "block");
+        setContent("error-msg-post", "Error: Post fields must be at least 3 characters in length.")
+        return;
+    }
+
+    fetch("/post/new", {
+            headers: {
+                "Content-Type": "application/json; charset=utf-8",
+                "x-access-token": localStorage.getItem('loginToken')
+            },
+            method: 'POST',
+            body: JSON.stringify({
+                title,
+                abstract,
+                url,
+            })
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw Error("Please check your credentials try again.");
+            }
+            return response.json();
+        })
+        .then(data => {
+            setDisplay("error-msg-post", "block");
+            setContent("error-msg-post", "Posted!")
+        })
+        .catch(error => {
+            setDisplay("error-msg-post", "block");
+            setContent("error-msg-post", error)
             console.log(error);
         });
 };
@@ -133,33 +173,27 @@ function doSearch() {
     }
     setDisplay("error-msg-search", "none");
 
-    fetch("https://export.arxiv.org/api/query?search_query=all:" + searchTerm + "&start=0&max_results=15")
+    fetch("/post/search?term=" + searchTerm, {
+            headers: { "x-access-token": localStorage.getItem('loginToken') },
+        })
         .then(response => {
             if (!response.ok) {
                 throw Error("There was an error with the current search term. Please try again.");
             }
-            return response.text();
+            return response.json();
         })
-        .then(textData => {
-            const parser = new DOMParser();
-            const domData = parser.parseFromString(textData, "application/xml");
-            const jsonData = xmlToJson(domData);
+        .then(jsonData => {
             const carrousel = document.getElementById('carrousel');
 
-            if (!jsonData["feed"].hasOwnProperty('entry')) {
+            if (jsonData.length == 0) {
                 carrousel.replaceChildren();
                 throw Error("Search didn't return any result.");
             }
 
-            let entries = toArray(jsonData["feed"]["entry"]);
-
             carrousel.replaceChildren();
-            entries.forEach(entry => {
+            jsonData.forEach(entry => {
                 console.log(entry);
-                const title = entry["title"]["#text"];
-                const url = entry["id"]["#text"];
-                const abstract = entry["summary"]["#text"];
-                carrousel.appendChild(createPaperElement(title, url, abstract));
+                carrousel.appendChild(createPaperElement(entry.title, entry.url, entry.abstract));
             });
         })
         .catch(error => {

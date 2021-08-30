@@ -1,7 +1,7 @@
 const Post = require("../model/post");
 
 exports.new = async (req, res) => {
-    const { title, abstract } = req.body;
+    const { title, abstract, url } = req.body;
 
     if (title.length < 3 || abstract.length < 3) {
         return res.status(400).send("Invalid field.");
@@ -10,6 +10,7 @@ exports.new = async (req, res) => {
     let post = await Post.create({
         title,
         abstract,
+        url,
     });
 
     return res.status(201).json(post);
@@ -22,6 +23,7 @@ exports.search = async (req, res) => {
         $or: [
             { title: new RegExp(term, 'i') },
             { abstract: new RegExp(term, 'i') },
+            { url: new RegExp(term, 'i') },
         ]
     });
 
